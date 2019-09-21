@@ -25,13 +25,13 @@
     "prettier-config-standard": "^1.0.1"
   },
   "scripts": {
-    "lint": "prettier-standard --lint",
+    "lint": "eslint .",
     "precommit": "lint-staged"
   },
   "lint-staged": {
     "linters": {
       "**/*": [
-        "prettier-standard --lint",
+        "eslint . --fix",
         "git add"
       ]
     }

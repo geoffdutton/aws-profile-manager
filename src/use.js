@@ -1,4 +1,5 @@
-const shelljs = require('shelljs')
+// Still experimenting with shelljs
+// const shelljs = require('shelljs')
 const common = require('./common')
 const { InvalidInputError } = require('./errors')
 
