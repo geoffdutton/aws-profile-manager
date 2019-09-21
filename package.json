@@ -1,0 +1,39 @@
+{
+  "name": "aws-profile-manager",
+  "version": "0.0.1",
+  "description": "Quickly and easily switch between AWS profiles",
+  "main": "index.js",
+  "bin": {
+    "aws-profile-manager": "./index.js"
+  },
+  "author": "Geoff Dutton <g.dutton@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-prettier-standard": "^3.0.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "lint-staged": "^9.2.5",
+    "prettier": "1.18.2",
+    "prettier-config-standard": "^1.0.1"
+  },
+  "scripts": {
+    "lint": "prettier-standard --lint",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "linters": {
+      "**/*": [
+        "prettier-standard --lint",
+        "git add"
+      ]
+    }
+  },
+  "dependencies": {},
+  "keywords": []
+}
