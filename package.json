@@ -27,7 +27,6 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "precommit": "lint-staged",
     "tdd": "jest --watch",
     "test": "npm run lint && jest --coverage"
   },
@@ -36,11 +35,6 @@
       "eslint . --fix",
       "git add"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   },
   "dependencies": {
     "chalk": "^2.4.2",
@@ -60,5 +54,10 @@
   "homepage": "https://github.com/geoffdutton/aws-profile-manager#readme",
   "files": [
     "src"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
 }
