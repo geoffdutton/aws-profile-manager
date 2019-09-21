@@ -1,6 +1,6 @@
 {
   "name": "aws-profile-manager",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Quickly and easily switch between AWS profiles",
   "main": "src/index.js",
   "bin": {
