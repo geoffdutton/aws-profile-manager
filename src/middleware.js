@@ -1,6 +1,6 @@
 const common = require('./common')
 
-const middleware = fn => async () => {
+const middleware = (fn, flags) => async () => {
   try {
     const aws = common.getAWSCreds()
     if (!aws) {
@@ -10,7 +10,14 @@ const middleware = fn => async () => {
     }
 
     const conf = common.getDotConfig()
-    return fn({ aws, conf, cwd: process.cwd() })
+    const result = await fn({
+      aws,
+      common,
+      conf,
+      cwd: process.cwd(),
+      flags
+    })
+    return result
   } catch (e) {
     return e
   }
@@ -19,12 +26,13 @@ const middleware = fn => async () => {
 /**
  * Adds common functionality
  * @param {Object.<string, function>} objectOfFns
+ * @param {Object} flags -- command line flags
  * @returns {Object.<string, function>}
  */
-module.exports = function applyMiddleware(objectOfFns) {
+module.exports.apply = function applyMiddleware(objectOfFns, flags) {
   const fns = Object.keys(objectOfFns)
   fns.forEach(fnKey => {
-    objectOfFns[fnKey] = middleware(objectOfFns[fnKey])
+    objectOfFns[fnKey] = middleware(objectOfFns[fnKey], flags)
   })
 
   return objectOfFns

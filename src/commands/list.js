@@ -1,7 +1,7 @@
-module.exports.cmd = function list(awsProfiles) {
+module.exports = function list({ aws }) {
   return (
     '\nAvailable AWS Profiles:\n' +
-    Object.keys(awsProfiles)
+    Object.keys(aws)
       .sort()
       .map((prof, i) => `${i + 1})    ${prof}`)
       .join('\n')

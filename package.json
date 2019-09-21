@@ -5,8 +5,7 @@
   "main": "src/index.js",
   "bin": {
     "aws-profile-manager": "src/cli.js",
-    "aws-profile": "src/cli.js",
-    "awsenv": "src/cli.js"
+    "aws-profile": "src/cli.js"
   },
   "author": "Geoff Dutton <g.dutton@gmail.com>",
   "license": "MIT",
@@ -21,13 +20,16 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^3.0.5",
+    "jest": "^24.9.0",
     "lint-staged": "^9.2.5",
     "prettier": "1.18.2",
     "prettier-config-standard": "^1.0.1"
   },
   "scripts": {
     "lint": "eslint .",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "tdd": "jest --watch",
+    "test": "npm run lint && jest --coverage"
   },
   "lint-staged": {
     "**/*.js": [

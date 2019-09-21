@@ -1,9 +1,8 @@
 // Still experimenting with shelljs
 // const shelljs = require('shelljs')
-const common = require('./common')
-const { InvalidInputError } = require('./errors')
+const { InvalidInputError } = require('../errors')
 
-module.exports = async function use({ aws, conf, cwd }) {
+module.exports = async function use({ aws, common, conf, cwd }) {
   const cwdProf = conf.profileByDirectory[cwd]
   if (cwdProf) {
     return `export AWS_PROFILE=${cwdProf}`

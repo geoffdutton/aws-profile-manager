@@ -1,20 +1,38 @@
-const common = require('./common')
+const middleware = require('./middleware')
+const chalk = require('chalk')
 
-const main = {
-  async current() {
-    return (
-      `Current Env\nAWS_PROFILE=` + (process.env.AWS_PROFILE || '<Not Set>')
-    )
-  },
-  async list({ aws }) {
-    return require('./list').cmd(aws)
-  },
-  use: require('./use'),
-  async reset({ conf, cwd }) {
-    conf.profileByDirectory[cwd] = undefined
-    common.setDotConfig(conf)
-    return `Removed stored profile for ${cwd}`
+async function main(flags) {
+  // console.log('\n', { flags }, '\n')
+
+  const commands = middleware.apply(require('./commands'), flags)
+
+  const [cmd] = flags._ || []
+
+  if (flags.help || cmd === 'help') {
+    return commands.help()
   }
+
+  let output = ''
+
+  switch (cmd) {
+    case 'list':
+      output = await commands.list()
+      console.log(chalk.yellow(output))
+      break
+    case 'reset':
+      output = await commands.reset()
+      console.log(chalk.red(output))
+      break
+    case 'use':
+      output = await commands.use()
+      console.log(chalk.blue(output))
+      break
+    default:
+      output = await commands.current()
+      console.log(chalk.green(output))
+  }
+
+  return 0
 }
 
 /**
@@ -22,4 +40,4 @@ const main = {
  * @type {Object}
  */
 
-module.exports = require('./middleware')(main)
+module.exports = main
