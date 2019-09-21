@@ -10,6 +10,7 @@
   "author": "Geoff Dutton <g.dutton@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "codecov": "^3.6.1",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-config-prettier-standard": "^3.0.1",
@@ -28,7 +29,8 @@
   "scripts": {
     "lint": "eslint .",
     "tdd": "jest --watch",
-    "test": "npm run lint && jest --coverage"
+    "test": "npm run lint && jest --coverage",
+    "test:ci": "npm test && codecov"
   },
   "lint-staged": {
     "**/*.js": [
