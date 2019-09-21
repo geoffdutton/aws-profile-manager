@@ -8,10 +8,16 @@ const CONFIG = 'config.json'
 const CommonFunctions = {
   homeDir: require('os').homedir(),
 
-  writeFile(fileName, data) {
+  writeFile(fileName, data, skipEnsure = false) {
+    if (!skipEnsure) {
+      // otherwise maximum call stack
+      this.ensureFile(fileName)
+    }
+
     fs.writeFileSync(fileName, stringify(data, { space: '  ' }))
   },
   readFile(fileName) {
+    this.ensureFile(fileName)
     const data = fs.readFileSync(fileName, 'utf8')
     try {
       return JSON.parse(data)
@@ -25,7 +31,7 @@ const CommonFunctions = {
         recursive: true
       })
 
-      this.writeFile(fileName, {})
+      this.writeFile(fileName, {}, true)
     }
   },
 
