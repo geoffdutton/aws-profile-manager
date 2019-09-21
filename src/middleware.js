@@ -15,6 +15,7 @@ const middleware = (fn, flags) => async () => {
       common,
       conf,
       cwd: process.cwd(),
+      env: process.env,
       flags
     })
     return result

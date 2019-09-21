@@ -28,6 +28,7 @@ describe('middleware', () => {
       common,
       conf: dotConf,
       cwd: process.cwd(),
+      env: process.env,
       flags
     })
 
