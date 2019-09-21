@@ -10,6 +10,7 @@ const middleware = (fn, flags) => async () => {
     }
 
     const conf = common.getDotConfig()
+    // We want to await this function
     const result = await fn({
       aws,
       common,
