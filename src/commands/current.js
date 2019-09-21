@@ -1,3 +1,6 @@
 module.exports = function current({ env }) {
-  return `Current Env\nAWS_PROFILE=` + (env.AWS_PROFILE || '<Not Set>')
+  return [
+    'Current Env',
+    'AWS_PROFILE=' + (env.AWS_PROFILE || '<Not Set>')
+  ].join('\n')
 }
