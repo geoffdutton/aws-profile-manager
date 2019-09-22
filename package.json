@@ -1,6 +1,6 @@
 {
   "name": "awsprof",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Quickly and easily switch between AWS profiles",
   "main": "src/index.js",
   "bin": {
