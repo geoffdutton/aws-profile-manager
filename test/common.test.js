@@ -1,6 +1,7 @@
 const fs = require('fs')
 const execSync = require('child_process').execSync
 const path = require('path')
+const readline = require('readline')
 const common = require('../src/common')
 
 const exampleIni = `
@@ -21,7 +22,19 @@ describe('common functions', () => {
   const testJson = path.resolve(mockFilesDir, 'json.txt')
   const testAwsCreds = path.resolve(fakeHomeDir, '.aws', 'credentials')
 
+  let mockRlInterface
+
   beforeEach(() => {
+    mockRlInterface = {
+      question: jest.fn((msg, cb) => {
+        // eslint-disable-next-line standard/no-callback-literal
+        cb('1')
+      }),
+      close: jest.fn()
+    }
+
+    readline.createInterface = jest.fn().mockReturnValue(mockRlInterface)
+
     execSync(`rm -rf ${mockFilesDir}`)
     fs.mkdirSync(mockFilesDir)
     fs.mkdirSync(fakeHomeDir)
@@ -79,5 +92,31 @@ describe('common functions', () => {
         aws_secret_access_key: 'personal-secret'
       }
     })
+  })
+
+  test('askCliQuestion', async () => {
+    const msg = 'The ?'
+    const answer = await common.askCliQuestion(msg)
+    expect(answer).toBe('1')
+    expect(readline.createInterface).toHaveBeenCalledWith({
+      input: process.stdin,
+      output: process.stdout
+    })
+
+    expect(mockRlInterface.question).toHaveBeenCalledWith(
+      `${msg}\n\n`,
+      expect.any(Function)
+    )
+    expect(mockRlInterface.close).toHaveBeenCalledTimes(1)
+  })
+
+  test('askCliQuestion with array', async () => {
+    const msg = ['The ?']
+    const answer = await common.askCliQuestion(msg)
+    expect(answer).toBe('1')
+    expect(mockRlInterface.question).toHaveBeenCalledWith(
+      `${msg}\n\n`,
+      expect.any(Function)
+    )
   })
 })

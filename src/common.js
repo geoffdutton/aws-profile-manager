@@ -70,7 +70,7 @@ const CommonFunctions = {
         input: process.stdin,
         output: process.stdout
       })
-      rl.question(`${msg}\n\n`, answer => {
+      rl.question(`${msg}\n\n`, function readlineQuestionCallback(answer) {
         rl.close()
         resolve(answer)
       })
