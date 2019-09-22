@@ -27,9 +27,12 @@ const CommonFunctions = {
   },
   ensureFile(fileName) {
     if (!fs.existsSync(fileName)) {
-      fs.mkdirSync(path.dirname(fileName), {
-        recursive: true
-      })
+      const dir = path.dirname(fileName)
+      if (!fs.existsSync(dir)) {
+        fs.mkdirSync(dir, {
+          recursive: true
+        })
+      }
 
       this.writeFile(fileName, {}, true)
     }
