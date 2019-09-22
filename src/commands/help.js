@@ -1,15 +1,17 @@
-const cliHelp = `
+const pkg = require('../../package')
+const cliHelp = `AWS Profile Manager v${pkg.version}
+
 @TODO: Clean this up
 Manage your AWS environment variables like aa pro!
 
 Usage
-  $ aws-profile-manager
+  $ awsprof
 
 Options
   --something do something
 
 Examples
-  $ aws-profile-manager .
+  $ awsprof use
 `
 
 module.exports = function help() {
