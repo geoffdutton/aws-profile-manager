@@ -1,11 +1,10 @@
 {
-  "name": "aws-profile-manager",
+  "name": "awsprof",
   "version": "0.0.2",
   "description": "Quickly and easily switch between AWS profiles",
   "main": "src/index.js",
   "bin": {
-    "aws-profile-manager": "src/cli.js",
-    "aws-profile": "src/cli.js"
+    "awsprof": "src/cli.js"
   },
   "author": "Geoff Dutton <g.dutton@gmail.com>",
   "license": "MIT",
