@@ -1,4 +1,5 @@
 const cliHelp = `
+@TODO: Clean this up
 Manage your AWS environment variables like aa pro!
 
 Usage
@@ -13,5 +14,5 @@ Examples
 
 module.exports = function help() {
   console.log(cliHelp)
-  process.exit(1)
+  return 1
 }
