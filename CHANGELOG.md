@@ -1,5 +1,8 @@
 # aws-profile-manager
 
+## v0.1.1
+- Added npm badges
+
 ## v0.1.0
 - Published to npm
 - Changed the package and command to `awsprof`
