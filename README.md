@@ -6,3 +6,47 @@
 [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/3201/badge)](https://bestpractices.coreinfrastructure.org/projects/3201)
 
 Quickly and easily switch between AWS profiles
+
+## Motivation
+I wanted something similar to [nvm](https://github.com/nvm-sh/nvm) or [rvm](https://rvm.io/) to manage and set my `AWS_PROFILE` environment variouable based on the directory I'm in.
+
+## Overview
+The first proof of concept uses a centralized JSON file to keep track of what profiles to use for which directories in `.aws-profile-manager/config.json` rather than relying on some sort of dot RC file per project.
+
+Currently, this doesn't actually export any environment variables, as I'm still trying to figure out the best way to do that. 
+
+Important note: this profile manager doesn't modify your `~/.aws/credentials` file, and only parses the aws creds file locally to present options to the user.
+
+## Usage
+First thing, install it globally:
+```bash
+npm i -g aws-profile-manager
+```
+
+Then move to your project directory and save a profile:
+```bash
+cd ~/Projects/my-awesome-project
+aws-profile-manager use
+...
+No profile set for ~/Projects/my-awesome-project
+Chose a profile to use:
+1)  default
+2)  myStartup
+```
+
+Now you can see the export command to run when you're in that project directory:
+```bash
+cd ~/Projects/my-awesome-project
+aws-profile-manager use
+...
+export AWS_PROFILE=default
+```
+Which you could copy/paste to your terminal. This is the spot that needs work.
+
+Finally, you can reset it to be prompted again:
+```bash
+cd ~/Projects/my-awesome-project
+aws-profile-manager reset
+...
+Removed stored profile for ~/Projects/my-awesome-project
+```
