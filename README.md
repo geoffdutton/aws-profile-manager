@@ -20,13 +20,13 @@ Important note: this profile manager doesn't modify your `~/.aws/credentials` fi
 ## Usage
 First thing, install it globally:
 ```bash
-npm i -g aws-profile-manager
+npm i -g awsprof
 ```
 
 Then move to your project directory and save a profile:
 ```bash
 cd ~/Projects/my-awesome-project
-aws-profile-manager use
+awsprof use
 ...
 No profile set for ~/Projects/my-awesome-project
 Chose a profile to use:
@@ -37,7 +37,7 @@ Chose a profile to use:
 Now you can see the export command to run when you're in that project directory:
 ```bash
 cd ~/Projects/my-awesome-project
-aws-profile-manager use
+awsprof use
 ...
 export AWS_PROFILE=default
 ```
@@ -46,7 +46,7 @@ Which you could copy/paste to your terminal. This is the spot that needs work.
 Finally, you can reset it to be prompted again:
 ```bash
 cd ~/Projects/my-awesome-project
-aws-profile-manager reset
+awsprof reset
 ...
 Removed stored profile for ~/Projects/my-awesome-project
 ```
