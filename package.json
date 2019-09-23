@@ -4,7 +4,7 @@
   "description": "Quickly and easily switch between AWS profiles",
   "main": "src/index.js",
   "bin": {
-    "awsprof": "src/cli.js"
+    "awsprof": "src/entry.sh"
   },
   "author": "Geoff Dutton <g.dutton@gmail.com>",
   "license": "MIT",

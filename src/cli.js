@@ -8,6 +8,8 @@ const flags = mri(process.argv.slice(2), {
   }
 })
 
+console.log({ flags })
+
 require('./')(flags)
   .then(function index(result) {
     if (typeof result === 'number') {

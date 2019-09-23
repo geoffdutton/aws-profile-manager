@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-aws_profile_echo() {
-  output="$(aws-profile)"
-  echo $output
-}
+output="$(node ./src/cli.js "$@")"
+lastLine=$(echo "$output" | tail -1)
+
+if [[ $lastLine == *"export AWS_PROFILE"* ]]; then
+  . $lastLine
+fi
+echo "$output"
