@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 DIR="$(command cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 __awsprof_cwd_is_set() {
