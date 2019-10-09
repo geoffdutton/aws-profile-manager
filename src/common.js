@@ -2,7 +2,7 @@ const path = require('path')
 const ini = require('ini')
 const fs = require('fs')
 const stringify = require('json-stable-stringify-without-jsonify')
-const DOT_DIR = '.aws-profile-manager'
+const DOT_DIR = '.awsprof'
 const CONFIG = 'config.json'
 
 const CommonFunctions = {

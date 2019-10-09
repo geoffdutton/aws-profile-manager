@@ -2,8 +2,6 @@ const middleware = require('./middleware')
 const chalk = require('chalk')
 
 async function main(flags) {
-  // console.log('\n', { flags }, '\n')
-
   const commands = middleware.apply(require('./commands'), flags)
 
   const [cmd] = flags._ || []
