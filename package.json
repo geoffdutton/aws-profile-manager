@@ -3,9 +3,6 @@
   "version": "0.1.1",
   "description": "Quickly and easily switch between AWS profiles",
   "main": "src/index.js",
-  "bin": {
-    "awsprof": "src/entry.sh"
-  },
   "author": "Geoff Dutton <g.dutton@gmail.com>",
   "license": "MIT",
   "devDependencies": {

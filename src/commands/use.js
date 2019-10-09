@@ -5,7 +5,7 @@ const { InvalidInputError } = require('../errors')
 module.exports = async function use({ aws, common, conf, cwd }) {
   const cwdProf = conf.profileByDirectory[cwd]
   if (cwdProf) {
-    return `export AWS_PROFILE=${cwdProf}`
+    return `AWS_PROFILE=${cwdProf}`
   }
 
   const profList = Object.keys(aws).sort()
@@ -31,5 +31,5 @@ module.exports = async function use({ aws, common, conf, cwd }) {
   conf.profileByDirectory[cwd] = prof
   common.setDotConfig(conf)
 
-  return `export AWS_PROFILE=${prof}`
+  return `AWS_PROFILE=${prof}`
 }
