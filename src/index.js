@@ -6,7 +6,7 @@ async function main(flags) {
 
   const [cmd] = flags._ || []
 
-  if (flags.help || cmd === 'help') {
+  if (flags.version || flags.help || cmd === 'help') {
     return commands.help()
   }
 

@@ -4,7 +4,9 @@ const mri = require('mri')
 const flags = mri(process.argv.slice(2), {
   default: {
     checkCurrent: false,
-    skipPrompt: false
+    skipPrompt: false,
+    version: false,
+    help: false
   }
 })
 

@@ -21,8 +21,16 @@ Important note: this profile manager doesn't modify your `~/.aws/credentials` fi
 ## Usage
 First thing, install it globally:
 ```bash
-wget git/path/to/awsprof_install.sh
+git -c advice.detachedHead=false clone https://github.com/geoffdutton/aws-profile-manager.git --quiet -b v1.0.0 --depth=1 ~/.awsprof
 ```
+
+Then add this to `.bash_profile`:
+```bash
+export AWSPROF_INSTALL_DIR="$HOME/.awsprof"
+[[ -f "$AWSPROF_INSTALL_DIR/awsprof.sh" ]] && \. "$AWSPROF_INSTALL_DIR/awsprof.sh"
+```
+
+And open a new terminal.
 
 Then move to your project directory and save a profile:
 ```bash
