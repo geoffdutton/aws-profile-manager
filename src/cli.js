@@ -2,9 +2,9 @@
 
 const mri = require('mri')
 const flags = mri(process.argv.slice(2), {
-  // string: ['use'],
   default: {
-    checkCurrent: false
+    checkCurrent: false,
+    skipPrompt: false
   }
 })
 

@@ -5,8 +5,10 @@ let aws
 let cwd
 let conf
 let common
+let flags
 
 beforeEach(() => {
+  flags = {}
   aws = {
     prof1: {},
     another: {}
@@ -28,7 +30,8 @@ test('uses existing entry', async () => {
       aws,
       common,
       conf,
-      cwd
+      cwd,
+      flags
     })
   ).toMatchInlineSnapshot(`"AWS_PROFILE=prof1"`)
 })
@@ -39,7 +42,8 @@ test('prompts user from existing profiles', async () => {
       aws,
       common,
       conf,
-      cwd
+      cwd,
+      flags
     })
   ).toMatchInlineSnapshot(`"AWS_PROFILE=another"`)
   expect(common.askCliQuestion).toHaveBeenCalledWith([
@@ -59,10 +63,26 @@ test('throws InvalidInputError', async () => {
       aws,
       common,
       conf,
-      cwd
+      cwd,
+      flags
     })
   ).rejects.toThrow(InvalidInputError)
 
   expect(conf.profileByDirectory[cwd]).toBeUndefined()
+  expect(common.setDotConfig).not.toHaveBeenCalled()
+})
+
+test('skips prompt to user with flag', async () => {
+  flags.skipPrompt = true
+  expect(
+    await use({
+      aws,
+      common,
+      conf,
+      cwd,
+      flags
+    })
+  ).toBe(0)
+  expect(common.askCliQuestion).not.toHaveBeenCalled()
   expect(common.setDotConfig).not.toHaveBeenCalled()
 })

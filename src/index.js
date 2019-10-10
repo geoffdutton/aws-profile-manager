@@ -23,7 +23,7 @@ async function main(flags) {
       break
     case 'use':
       output = await commands.use()
-      console.log(chalk.blue(output))
+      output !== 0 && console.log(chalk.blue(output))
       break
     default:
       output = await commands.current()

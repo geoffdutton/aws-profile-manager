@@ -1,11 +1,13 @@
-// Still experimenting with shelljs
-// const shelljs = require('shelljs')
 const { InvalidInputError } = require('../errors')
 
-module.exports = async function use({ aws, common, conf, cwd }) {
+module.exports = async function use({ aws, common, conf, cwd, flags }) {
   const cwdProf = conf.profileByDirectory[cwd]
   if (cwdProf) {
     return `AWS_PROFILE=${cwdProf}`
+  }
+
+  if (flags.skipPrompt) {
+    return 0
   }
 
   const profList = Object.keys(aws).sort()
