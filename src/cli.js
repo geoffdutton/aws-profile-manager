@@ -4,7 +4,7 @@ const mri = require('mri')
 const flags = mri(process.argv.slice(2), {
   // string: ['use'],
   default: {
-    something: false
+    checkCurrent: false
   }
 })
 

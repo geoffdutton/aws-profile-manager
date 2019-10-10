@@ -30,7 +30,7 @@ test('uses existing entry', async () => {
       conf,
       cwd
     })
-  ).toMatchInlineSnapshot(`"export AWS_PROFILE=prof1"`)
+  ).toMatchInlineSnapshot(`"AWS_PROFILE=prof1"`)
 })
 
 test('prompts user from existing profiles', async () => {
@@ -41,7 +41,7 @@ test('prompts user from existing profiles', async () => {
       conf,
       cwd
     })
-  ).toMatchInlineSnapshot(`"export AWS_PROFILE=another"`)
+  ).toMatchInlineSnapshot(`"AWS_PROFILE=another"`)
   expect(common.askCliQuestion).toHaveBeenCalledWith([
     `No profile set for ${cwd}`,
     'Chose a profile to use:',
