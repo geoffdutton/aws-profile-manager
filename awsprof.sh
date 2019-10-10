@@ -34,3 +34,4 @@ awsprof() {
   fi
 }
 
+awsprof use --skipPrompt
