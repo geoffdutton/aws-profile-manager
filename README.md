@@ -22,6 +22,8 @@ Important note: this profile manager doesn't modify your `~/.aws/credentials` fi
 First thing, install it globally:
 ```bash
 git -c advice.detachedHead=false clone https://github.com/geoffdutton/aws-profile-manager.git --quiet -b v1.0.0 --depth=1 ~/.awsprof
+cd ~/.awsprof && npm install
+
 ```
 
 Then add this to `.bash_profile`:
