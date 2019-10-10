@@ -31,6 +31,9 @@ awsprof() {
     __awsprof_use "$@"
   else
     node ${DIR}/src/cli.js "$@"
+    if [[ $1 == "reset" ]]; then
+      unset AWS_PROFILE
+    fi
   fi
 }
 
