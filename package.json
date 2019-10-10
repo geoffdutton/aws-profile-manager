@@ -1,6 +1,6 @@
 {
   "name": "awsprof",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "Quickly and easily switch between AWS profiles",
   "main": "src/index.js",
   "author": "Geoff Dutton <g.dutton@gmail.com>",
